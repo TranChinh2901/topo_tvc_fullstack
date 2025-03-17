@@ -4,6 +4,7 @@ const connectDB = require('./config/db')
 const cors = require('cors')
 const userRouter = require('./routes/userRoute')
 const categoriesRouter = require('./routes/categoriesRoute')
+const productRouter = require('./routes/productsRoute')
 require('dotenv').config()
 
 const app = express();
@@ -24,6 +25,8 @@ app.use(morgan('dev'))
 app.use('/api/v1/', userRouter)
 //API cuar categories
 app.use('/api/v2/', categoriesRouter)
+//API cua products
+app.use('/api/v3/', productRouter)
 
 
 app.get('/', (req, res) => {

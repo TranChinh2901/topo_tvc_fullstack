@@ -52,7 +52,62 @@ const updateCategory = async (req, res) => {
     }
 }
 
+const getALlCategories = async (req, res) => {
+    try {
+        const category = await categoriesModel.find({});
+        res.status(200).json({
+            success: true,
+            message: 'get all categories thành công',
+            category
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({
+            success: false,
+            message: 'Lỗi hàm getAllCategories',
+            error: error.message
+        })
+    }
+}
+
+const getSingleCategory = async (req, res) => {
+    try {
+        const category = await categoriesModel.findOne({ slug: req.params.slug })
+        res.status(200).send({
+            success: true,
+            message: 'get single category thành công',
+            category
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: 'Lỗi hàm getSingleCategory',
+            error: error.message
+        })
+    }
+}
+const deleteCategoryController = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await categoriesModel.findByIdAndDelete(id);
+        res.status(200).send({
+            success: true,
+            message: 'Xóa category thành công',
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: 'Lỗi hàm deleteCategoryController',
+            error: error.message
+        })
+    }
+}
 module.exports = {
     createCategories,
-    updateCategory
+    updateCategory,
+    getALlCategories,
+    getSingleCategory,
+    deleteCategoryController
 }

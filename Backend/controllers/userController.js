@@ -85,7 +85,7 @@ const loginController = async (req, res) => {
         //Kiểm tra token(token sẽ hết hạn sau 7 ngày)
         const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         res.status(200).send({
-            success: false,
+            success: true,
             message: 'Đăng nhập thành công',
             user: {
                 id: user.id,
