@@ -1,0 +1,19 @@
+# Bỏ qua thư mục node_modules
+node_modules/
+
+# Bỏ qua các file môi trường
+.env
+
+# Bỏ qua thư mục build và cache
+dist/
+build/
+.cache/
+
+# Bỏ qua các file hệ thống của Mac/Linux/Windows
+.DS_Store
+Thumbs.db
+
+# Bỏ qua thư mục log và debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
