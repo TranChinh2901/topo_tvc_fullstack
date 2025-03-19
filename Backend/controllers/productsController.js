@@ -1,6 +1,7 @@
 const productModel = require("../models/productModel");
 const slugify = require("slugify");
 const fs = require("fs");
+const categoriesModel = require("../models/categoriesModel");
 
 const createProductController = async (req, res) => {
     try {
@@ -299,7 +300,7 @@ const relatedProductController = async (req, res) => {
 
 const productCategoryController = async (req, res) => {
     try {
-        const category = await categoryModel.findOne({ slug: req.params.slug })
+        const category = await categoriesModel.findOne({ slug: req.params.slug })
         const products = await productModel.find({ category }).populate('category')
         res.status(200).send({
             success: true,

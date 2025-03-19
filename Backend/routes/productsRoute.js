@@ -24,6 +24,8 @@ router.get("/product-list/:page", productListController);
 //search product
 router.get('/search/:keyword', searchProductController)
 
+//:pid → ID của sản phẩm hiện tại (sẽ bị loại khỏi danh sách).
+//:cid → ID của danh mục để lọc các sản phẩm liên quan
 router.get('/related-product/:pid/:cid', relatedProductController)
 router.get('/product-category/:slug', productCategoryController)
 
